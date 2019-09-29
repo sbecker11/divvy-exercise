@@ -1,7 +1,7 @@
 WORKSPACE?=${shell pwd}
 PY_ENV?=venv
 VPATH=.:${PY_ENV}/
-PYEXE?=python3.6
+PYEXE?=python3
 
 .PHONY: all
 all: clean test

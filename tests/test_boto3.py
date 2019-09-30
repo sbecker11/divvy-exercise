@@ -7,23 +7,20 @@ from divvy_x import settings
 class Boto3Tests(unittest.TestCase):
 
     def test_list_all_s3_keys(self):
+        print(f"\nBoto3Tests.test_list_all_s3_keys()")
         bucket_name = settings.S3_BUCKET_NAME
         for key in list(self.get_all_s3_keys(bucket_name)):
             print(f"s3://{bucket_name}/{key}")
 
-    @staticmethod
-    def get_s3_client():
-        return boto3.client('s3',
-                            aws_access_key_id=settings.AWS_ACCOUNT_PUBLIC_KEY,
-                            aws_secret_access_key=settings.AWS_ACCOUNT_SECRET_KEY,
-                            region_name=settings.REGION_NAME)
+    def test_create_new_message_table(self):
+        pass
 
     def get_all_s3_keys(self, bucket_name):
         """
         Generate the keys in an S3 bucket.
         :param bucket_name: Name of the S3 bucket.
         """
-        s3 = self.get_s3_client()
+        s3 = boto3.client('s3')
         kwargs = {'Bucket': bucket_name}
         while True:
 

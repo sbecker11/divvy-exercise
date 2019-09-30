@@ -4,16 +4,13 @@ import unittest
 from divvy_x import settings
 
 
-class Boto3Tests(unittest.TestCase):
+class S3Tests(unittest.TestCase):
 
     def test_list_all_s3_keys(self):
         print(f"\nBoto3Tests.test_list_all_s3_keys()")
         bucket_name = settings.S3_BUCKET_NAME
         for key in list(self.get_all_s3_keys(bucket_name)):
             print(f"s3://{bucket_name}/{key}")
-
-    def test_create_new_message_table(self):
-        pass
 
     def get_all_s3_keys(self, bucket_name):
         """
